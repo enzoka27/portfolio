@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tropicália Ácida — Hypnotize </title>
+<meta name="description" content="Uma gota de cromo caiu no mar de Praia Grande e o mundo inteiro começou a refletir.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<svg class="defs" width="0" height="0" aria-hidden="true">
+  <defs>
+    <filter id="melt" x="-10%" y="-25%" width="120%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.016" numOctaves="2" seed="7" result="n">
+        <animate attributeName="baseFrequency" dur="22s" repeatCount="indefinite" values="0.006 0.016;0.011 0.028;0.005 0.012;0.006 0.016"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="liquid" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="2" result="n">
+        <animate attributeName="baseFrequency" dur="6s" repeatCount="indefinite" values="0.012;0.02;0.012"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="34" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- camadas: fundo líquido → texto de trás → mundo 3D → texto da frente -->
+<canvas id="bg" aria-hidden="true"></canvas>
+<canvas id="world" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="cur-ring" aria-hidden="true"></div>
+<div class="cur-dot" aria-hidden="true"></div>
+
+<div class="portal" id="portal">
+  <div class="breath"><i></i><i></i><i></i><i></i></div>
+  <p class="portal-say">mais fundo</p>
+  <p class="portal-sub mono">Hypnotize — Tropicália Ácida</p>
+  <div class="portal-btns">
+    <button class="pill" data-enter="sound">entrar com som</button>
+    <button class="pill ghost" data-enter="silent">entrar em silêncio</button>
+  </div>
+  <p class="portal-load mono" id="load">carregando o mundo…</p>
+</div>
+
+<header class="topbar mono">
+  <span>HYPNOTIZE </span>
+  <span class="tb-mid">TROPICÁLIA ÁCIDA</span>
+  <span id="clock">PRAIA GRANDE · --:--</span>
+</header>
+
+<nav class="rail" aria-hidden="true">
+  <div class="rail-fill"></div>
+  <span style="--at:0">00</span><span style="--at:.2">01</span><span style="--at:.4">02</span><span style="--at:.6">03</span><span style="--at:.8">04</span><span style="--at:1">05</span>
+</nav>
+<div class="depth mono" aria-hidden="true">profundidade <b id="depth">0000</b> m</div>
+
+<button class="sound mono" id="sound" aria-pressed="false">
+  <span class="eq"><i></i><i></i><i></i><i></i></span><span class="sound-label">som: off</span>
+</button>
+
+<main>
+
+  <!-- 00 · A GOTA -->
+  <section class="s hero" data-z="9">
+    <div class="back hero-type" aria-hidden="true">
+      <span class="h-tropi groovy">TROPI</span>
+      <span class="h-calia groovy">CÁLIA</span>
+    </div>
+    <h1 class="sr">Tropicália Ácida</h1>
+    <div class="front">
+      <span class="h-acida outline">ÁCIDA</span>
+      <span class="sticker s-vol"><br></span>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="bc" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text><textPath href="#bc">ROLE DEVAGAR ✺ ROLE DEVAGAR ✺ ROLE DEVAGAR ✺ </textPath></text></svg>
+        <span>↓</span>
+      </div>
+      <p class="hero-note mono">uma gota de cromo caiu no mar<br>de praia grande e o mundo<br>inteiro começou a refletir.</p>
+      <span class="coords mono">24°00′S<br>46°24′W</span>
+      <span class="h-tag serif-i">cutuca a gota ↗</span>
+    </div>
+  </section>
+
+  <!-- 01 · ONDA -->
+  <section class="s flor" data-z="-30">
+    <div class="back flor-letters groovy" aria-hidden="true"><span>O</span><span>N</span><span>D</span><span>A</span></div>
+    <div class="front flor-card reveal">
+      <p class="act mono">01 — ONDA</p>
+      <p class="big-serif">as formas aprenderam a <em>voar</em> quando ninguém estava olhando.</p>
+      <p class="mono small">46 formas · 3 espirais · 0 explicações</p>
+    </div>
+    <div class="front tape t1 mono" aria-hidden="true"><div>✿ tudo gira ✿ nada para ✿ tudo gira ✿ nada para ✿ tudo gira ✿ nada para ✿ tudo gira ✿ nada para ✿&nbsp;</div></div>
+    <div class="front tape t2 mono" aria-hidden="true"><div>☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀ verão eterno ☀&nbsp;</div></div>
+  </section>
+
+  <!-- 02 · O OLHO -->
+  <section class="s olho" data-z="-74">
+    <div class="back olho-word outline" aria-hidden="true">VOCÊ</div>
+    <div class="front olho-ring" aria-hidden="true">
+      <svg viewBox="0 0 600 600"><defs><path id="oc" d="M300,300 m-262,0 a262,262 0 1,1 524,0 a262,262 0 1,1 -524,0"/></defs>
+        <text><textPath href="#oc">TUDO TE OLHA DE VOLTA ✺ TUDO TE OLHA DE VOLTA ✺ TUDO TE OLHA DE VOLTA ✺ </textPath></text></svg>
+    </div>
+    <p class="front act mono olho-act reveal">02 — O OLHO</p>
+    <aside class="front notes reveal">
+      <p class="mono">notas de campo</p>
+      <ol>
+        <li>ele pisca a cada cinco segundos e pouco</li>
+        <li>ele sabe onde tá o seu mouse</li>
+        <li>as luas não obedecem ninguém</li>
+      </ol>
+    </aside>
+    <p class="front olho-quote reveal">“o mundo não é o que você vê.<br>é o que <em>te vê</em>.”</p>
+  </section>
+
+  <!-- 03 · COQUEIRAL -->
+  <section class="s coqueiral" data-z="-108">
+    <h2 class="front cq-title reveal">
+      <span class="cq-a serif-i">cartões-</span>
+      <span class="cq-b groovy">POSTAIS</span>
+      <span class="cq-c mono">de um verão que</span>
+      <span class="cq-d serif-i">não acabou</span>
+    </h2>
+    <p class="front act mono cq-act">03 — COQUEIRAL · arrasta as fotos</p>
+    <div class="front board">
+      <figure class="polaroid" style="--x:4%;--y:20%;--r:-8deg"><canvas data-card="0"></canvas><figcaption>verão sem fim</figcaption></figure>
+      <figure class="polaroid" style="--x:70%;--y:6%;--r:7deg"><canvas data-card="1"></canvas><figcaption>coqueiro elétrico</figcaption></figure>
+      <figure class="polaroid" style="--x:77%;--y:52%;--r:-4deg"><canvas data-card="2"></canvas><figcaption>a noite das duas luas</figcaption></figure>
+      <figure class="polaroid" style="--x:2%;--y:62%;--r:6deg"><canvas data-card="3"></canvas><figcaption>a onda que não quebra</figcaption></figure>
+      <figure class="polaroid" style="--x:36%;--y:76%;--r:-3deg"><canvas data-card="4"></canvas><figcaption>ilha sem nome</figcaption></figure>
+      <figure class="polaroid" style="--x:46%;--y:-2%;--r:11deg"><canvas data-card="5"></canvas><figcaption>sereia de neon</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 04 · O TÚNEL -->
+  <section class="s tunel" data-z="-170">
+    <div class="tunel-sticky">
+      <p class="front act mono tunel-act">04 — O TÚNEL</p>
+      <div class="front tunel-type" aria-hidden="true"><span>MAIS</span><span>FUNDO</span></div>
+      <p class="front tunel-sub serif-i">não tem fim, só tem cor.</p>
+    </div>
+  </section>
+
+  <!-- 05 · A VOLTA -->
+  <section class="s volta" data-z="-199">
+    <p class="front act mono reveal">05 — A VOLTA</p>
+    <p class="front volta-big reveal">você voltou.<br><em>mas não inteiro.</em></p>
+    <button class="front pill again reveal" id="again">de novo ↺</button>
+    <footer class="front foot mono">
+      <span>feito com calor, sal, cromo e ondas</span>
+      <span>HYPNOTIZE · 2026</span>
+    </footer>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

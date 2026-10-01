@@ -1,0 +1,10 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "Portfólio — Enzo Brandão",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --format=iife --minify --target=es2020 --outfile=app.js",
+    "watch": "esbuild src/main.js --bundle --format=iife --target=es2020 --outfile=app.js --watch"
+  },
+  "devDependencies": { "esbuild": "^0.25.0", "three": "^0.186.1" }
+}

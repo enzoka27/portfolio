@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vigia · Hypnotize Nº04</title>
+<meta name="description" content="Um prédio de concreto que presta atenção em você. Nada sai do seu navegador.">
+<meta name="theme-color" content="#0c0d0f">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<canvas id="world" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- visor de câmera de segurança -->
+<div class="vf" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+<div class="xh" aria-hidden="true"><i class="xh-h"></i><i class="xh-v"></i><span class="xh-c mono" id="xy">x 0000 · y 0000</span></div>
+
+<div class="portal" id="portal">
+  <div class="eye" aria-hidden="true"><i class="lid"></i><i class="iris"></i></div>
+  <p class="portal-say">você vai ser<br><em>observado.</em></p>
+  <p class="portal-sub">nada sai deste navegador. nada é guardado.<br>no fim, você decide o que acontece com o que ele viu.</p>
+  <div class="portal-btns">
+    <button class="pill" data-enter="sound">entrar com som</button>
+    <button class="pill ghost" data-enter="silent">entrar em silêncio</button>
+  </div>
+  <p class="portal-note mono">Hypnotize Nº04 · Vigia · por Enzo Brandão</p>
+</div>
+
+<header class="topbar mono">
+  <span>HYPNOTIZE <b>Nº04</b></span>
+  <span class="tb-mid">VIGIA</span>
+  <span class="tb-rec"><i class="rec"></i>REC <span id="tc">00:00:00</span></span>
+</header>
+
+<div class="camlabel mono" aria-hidden="true"><span id="camname">CAM 01 · FACHADA</span></div>
+
+<!-- painel de elevador: o andar é a cena -->
+<nav class="elev" aria-hidden="true">
+  <span class="mono elev-k">andar</span>
+  <span class="elev-n" id="floor">T</span>
+  <ol class="elev-list mono">
+    <li>T</li><li>-1</li><li>-2</li><li>-3</li><li>-4</li><li>-5</li><li>-6</li>
+  </ol>
+</nav>
+
+<button class="sound mono" id="sound" aria-pressed="false">
+  <span class="eq"><i></i><i></i><i></i><i></i></span><span class="sound-label">som: off</span>
+</button>
+<div class="flash" id="flash" aria-hidden="true"></div>
+<!-- o operador: alguém do outro lado do monitor comentando o que você faz -->
+<div class="op" id="op" aria-live="polite"><span class="op-who mono">operador</span><span class="op-t" id="opT"></span></div>
+<!-- o fantasma: o seu próprio cursor, repetido 2,5 s depois -->
+<div class="shadowcur" id="ghost" aria-hidden="true"><i></i><span class="mono">você, 2,5 s atrás</span></div>
+
+<main>
+
+  <!-- 00 · A FACHADA -->
+  <section class="s hero" data-z="10" data-cam="CAM 01 · FACHADA" data-floor="T">
+    <div class="back hero-type" aria-hidden="true">
+      <span class="h-vi">VI</span>
+    </div>
+    <!-- o "GIA" fica na frente do 3D: o prédio passa entre as duas metades da palavra -->
+    <div class="front hero-type hero-type-front" aria-hidden="true"><span class="h-gia">GIA</span></div>
+    <h1 class="sr">Vigia · Hypnotize Nº04</h1>
+    <div class="front hero-front">
+      <p class="hint serif-i">o holofote te procura.<br>mexe o mouse e vê quem acende.</p>
+      <p class="hero-note mono">um prédio de concreto<br>que presta atenção em você.<br>tudo que ele vê fica neste<br>navegador. e some quando<br>você sair.</p>
+      <span class="v-text mono">OBSERVAÇÃO · CONCRETO · TESTEMUNHA · OBSERVAÇÃO · CONCRETO · TESTEMUNHA</span>
+    </div>
+  </section>
+
+  <!-- 01 · O VÃO -->
+  <section class="s vao" data-z="-18" data-cam="CAM 02 · VÃO LIVRE" data-floor="-1">
+    <div class="back vao-type" aria-hidden="true">VÃO LIVRE</div>
+    <div class="front vao-card reveal">
+      <p class="act mono">01 · O VÃO · segura o clique</p>
+      <p class="big">toda liberdade<br><em>tem um peso em cima.</em></p>
+      <p class="mono small">você aguentou <b id="held">0,0</b> s</p>
+    </div>
+    <div class="front tape mono" aria-hidden="true"><div>⚠ não permaneça sob a carga ⚠ não permaneça sob a carga ⚠ não permaneça sob a carga ⚠ não permaneça sob a carga ⚠ não permaneça sob a carga ⚠ não permaneça sob a carga ⚠&nbsp;</div></div>
+  </section>
+
+  <!-- 02 · O CORREDOR -->
+  <section class="s corredor" data-z="-70" data-cam="CAM 03 · CORREDOR" data-floor="-2">
+    <div class="corr-sticky">
+      <p class="front act mono corr-act">02 · O CORREDOR · clica numa câmera pra cegar</p>
+      <p class="front corr-big">quantos olhos<br>cabem num<br><em>corredor?</em></p>
+      <p class="front corr-count mono">olhos abertos <b id="eyes">18</b>/<span id="eyesT">18</span></p>
+    </div>
+  </section>
+
+  <section class="s inter" data-z="-126" data-cam="CAM 04 · PILAR" data-floor="-2">
+    <div class="inter-sticky">
+      <p class="inter-text front" data-words>a cidade é feita de gente fingindo <em>que não se vê.</em></p>
+      <span class="mono inter-sign front">riscado num pilar</span>
+    </div>
+  </section>
+
+  <!-- 03 · A CURVA -->
+  <section class="s curva" data-z="-150" data-cam="CAM 05 · A CURVA" data-floor="-3">
+    <p class="front act mono curva-act reveal">03 · A CURVA · mexe o mouse: você é o sol</p>
+    <p class="front curva-big reveal">mil janelas.<br><em>nenhuma te conhece.</em></p>
+    <p class="front curva-small serif-i reveal">morar perto é diferente de morar junto.</p>
+  </section>
+
+  <!-- 04 · O ARQUIVO -->
+  <section class="s arquivo" data-z="-196" data-cam="CAM 06 · ARQUIVO" data-floor="-4">
+    <div class="arq-sticky">
+      <p class="front act mono arq-act">04 · O ARQUIVO · tudo que você faz vira uma gaveta</p>
+      <aside class="front ficha">
+        <header class="mono"><span>ficha nº <b id="fid">00000</b></span><span class="live"><i></i>ao vivo</span></header>
+        <dl id="ficha"></dl>
+        <p class="ficha-foot serif-i">nada disso sai daqui. mas tudo isso aconteceu.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 05 · O RETRATO -->
+  <section class="s retrato" data-z="-236" data-cam="CAM 07 · RETRATO" data-floor="-5">
+    <div class="ret-sticky">
+      <p class="front act mono ret-act">05 · O RETRATO · entalhado com o caminho do seu cursor</p>
+      <div class="front ret-text">
+        <p class="ret-big">isso é você,<br><em>segundo um prédio.</em></p>
+        <p class="ret-verdict serif-i" id="verdict">…</p>
+        <button class="pill danger" id="erase">apagar tudo</button>
+        <p class="ret-after mono" id="after">nada foi guardado. nem aqui.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · A SAÍDA -->
+  <section class="s saida" data-z="-274" data-cam="CAM 08 · SAÍDA" data-floor="-6">
+    <p class="front act mono reveal">06 · A SAÍDA</p>
+    <p class="front saida-big reveal">o prédio esquece.<br><em>você, não.</em></p>
+    <button class="front pill again reveal" id="again">entrar de novo ↺</button>
+    <footer class="front foot mono">
+      <span>nenhum dado saiu do seu navegador</span>
+      <span>criado por Enzo Brandão</span>
+      <span>HYPNOTIZE Nº04 · 2026</span>
+    </footer>
+  </section>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
