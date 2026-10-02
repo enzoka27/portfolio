@@ -109,8 +109,8 @@ const nums = $$('.num');
 const term = createTerminal($('#term'), {
   lang: () => lang,
   projects: [
-    { name: 'tropicália ácida (hypnotize)', href: '../tropicalia-acida-v2/index.html' },
-    { name: 'vigia (hypnotize)', href: '../vigia/index.html' },
+    { name: 'tropicália ácida (hypnotize)', href: 'hypnotize/tropicalia-acida/index.html' },
+    { name: 'vigia (hypnotize)', href: 'hypnotize/vigia/index.html' },
     { name: 'ccd ensino', target: '#trabalho' },
     { name: 'trinity', target: '#codigo' },
     { name: 'websocket minecraft', target: '#websocket' },
